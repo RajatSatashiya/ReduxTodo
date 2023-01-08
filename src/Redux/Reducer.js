@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_STATUS } from "./actionType";
+import { ADD_TODO, TOGGLE_STATUS, REMOVE_TODO } from "./actionType";
 
 //initial State
 const initialState = {
@@ -33,7 +33,17 @@ const reducer = (state = initialState, action) => {
       });
       return {
         ...state,
-        todos: todos,
+        todos,
+      };
+
+    case REMOVE_TODO:
+      var todos = state.todos.filter((todo) => {
+        return todo.id != action.id;
+      });
+
+      return {
+        ...state,
+        todos,
       };
     default:
       return state;

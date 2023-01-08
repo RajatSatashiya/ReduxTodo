@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, toggleStatus } from "./Redux/action";
+import { addTodo, toggleStatus, removeTodo } from "./Redux/action";
 import { Link } from "react-router-dom";
 
 function Todo() {
@@ -22,6 +22,8 @@ function Todo() {
       <div>
         <Link to={`/todo/${item.id}`}>More details...</Link>
       </div>
+
+      <div onClick={() => dispatch(removeTodo(item.id))}>Remove Item</div>
     </div>
   ));
   const [id, setId] = useState(2);
@@ -30,6 +32,8 @@ function Todo() {
   const handleButton = () => {
     dispatch(addTodo(id, todoInputRef.current.value));
     setId((id) => id + 1);
+
+    todoInputRef.current.value = "";
   };
   return (
     <>

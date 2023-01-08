@@ -5,13 +5,16 @@ import { useSelector } from "react-redux";
 function Todoitem() {
   const params = useParams();
   var num = Number(params["id"]);
-  const todoitem = useSelector((state) => state.todos[num - 1]);
+  var todoitem = useSelector((state) => state.todos);
 
+  todoitem = todoitem.filter((item) => {
+    return item.id === num;
+  });
   return (
     <>
       <div className="card">
-        <div>{todoitem.text}</div>
-        <div>Status: {todoitem.complete ? "Completed" : "Incomplete"}</div>
+        <div>{todoitem[0].text}</div>
+        <div>Status: {todoitem[0].complete ? "Completed" : "Incomplete"}</div>
       </div>
     </>
   );
