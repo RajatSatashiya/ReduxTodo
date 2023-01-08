@@ -1,4 +1,4 @@
-import { ADD_TODO } from "./actionType";
+import { ADD_TODO, TOGGLE_STATUS } from "./actionType";
 
 //initial State
 const initialState = {
@@ -24,6 +24,16 @@ const reducer = (state = initialState, action) => {
             complete: false,
           },
         ],
+      };
+    case TOGGLE_STATUS:
+      var todos = state.todos.map((todo) => {
+        return todo.id === action.id
+          ? { ...todo, complete: !todo.complete }
+          : todo;
+      });
+      return {
+        ...state,
+        todos: todos,
       };
     default:
       return state;

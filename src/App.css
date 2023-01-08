@@ -1,0 +1,22 @@
+.todoitem {
+  width: 30%;
+  padding: 0.3rem 1rem;
+  margin-top: 5px;
+  border-radius: 10px;
+  background: #b5a5c2;
+  text-transform: capitalize;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: #dea3c1;
+  color: #3f2b5d;
+  width: 40%;
+  height: 200px;
+  padding: 1rem;
+  border-radius: 5px;
+}
